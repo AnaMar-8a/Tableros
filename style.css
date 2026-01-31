@@ -1,37 +1,59 @@
+/* Configuración Base */
 body {
     margin: 0;
     padding: 0;
-    background-color: #0f172a;
+    background-color: #0f172a; /* Slate 900 de fondo */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: screen;
-}
-
-#root {
+    min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
+    color: #1e293b;
 }
 
-/* El Frame del Mockup */
-.pbi-frame {
+/* El Frame Maestro para Power BI (1280x720) */
+#dashboard-frame {
     width: 1280px;
     height: 720px;
     position: relative;
     overflow: hidden;
+    border-radius: 8px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Fix para Recharts: asegurar que el gráfico espere al contenedor */
-.recharts-responsive-container {
-    min-width: 0;
-    min-height: 0;
+/* Scrollbar Personalizado (Elegante y discreto) */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.5);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.8);
 }
 
-.animate-fade-in {
-    animation: fadeIn 0.4s ease-out forwards;
+/* Animaciones de Entrada */
+.animate-in {
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(10px);
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fix crítico para Recharts en contenedores flexibles */
+.recharts-responsive-container {
+    min-width: 0;
+    min-height: 0;
 }
