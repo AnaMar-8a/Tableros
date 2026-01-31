@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: screen;
+}
+
+#root {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* El Frame del Mockup */
+.pbi-frame {
+    width: 1280px;
+    height: 720px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Fix para Recharts: asegurar que el gráfico espere al contenedor */
+.recharts-responsive-container {
+    min-width: 0;
+    min-height: 0;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
