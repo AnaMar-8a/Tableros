@@ -78,7 +78,20 @@ Para levantar el proyecto y realizar revisiones locales:
     ```bash
     npm run dev
     ```
+## Galería y Documentación
+A continuación se presenta la visualización del alcance actual del prototipo y la documentación base del negocio.
 
+### Vista Previa del Tablero
+> *Capturas de pantalla del alcance funcional validado.*
+
+| Vista Estratégica (General) | Vista Táctica (Detalle) |
+|:---:|:---:|
+| [![Vista General](https://img.shields.io/badge/Ver-Vista_Estratégica-blue?style=for-the-badge&logo=adobeacrobatreader)](assets/tablero-p1.pdf) | [![Vista Detalle](https://img.shields.io/badge/Ver-Vista_Táctica-blue?style=for-the-badge&logo=adobeacrobatreader)](assets/tablero-p2.pdf) |
+| *[Ver PDF completo](assets/tablero-p1.pdf)* | *[Ver PDF completo](assets/tablero-p2.pdf)* |
+
+### Documentación Adjunta
+Para profundizar en el detalle matemático de los indicadores y las reglas de negocio de GN:
+* 📄 **[Descargar: Métricas de Desempeño Planeación Demanda (PDF)](assets/Metricas%20Desempeno%20Planeacion%20Demanda%2027-01-2026.pdf)**
 ---
 
 [**Ana Maria Ochoa**](https://www.linkedin.com/in/8aanamaria/)
