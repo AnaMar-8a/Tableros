@@ -1,43 +1,73 @@
 # Project PRAGMA: Demand Planning Dashboard (Mockup)
 
-## Contexto del Proyecto
-Este repositorio aloja el **primer mockup funcional** desarrollado en el marco del **Proyecto PRAGMA**, una iniciativa estratégica ejecutada por **Summan** para **Grupo Nutresa**.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b3f076c8-5c4d-4503-9110-384732151609/deploy-status)](https://app.netlify.com/sites/pronosticos-s/deploys)
+🚀 **Demo en vivo:** [https://pronosticos-s.netlify.app/](https://pronosticos-s.netlify.app/)
 
-Este desarrollo surge de la necesidad de materializar la visión del nuevo modelo de **Supply Chain Management (SCM)**, específicamente enfocado en la reingeniería y optimización del proceso de **Pronóstico de la Demanda**. El objetivo de este prototipo es validar la visualización de indicadores críticos de desempeño y la experiencia de usuario antes de la integración final con los sistemas productivos.
+## 1. Visión Estratégica y Contexto del Proyecto
+Este repositorio aloja el **primer mockup funcional** desarrollado bajo la iniciativa **PRAGMA**, ejecutada por [**Summan**](http://www.summan.com/) para **Grupo Nutresa**.
 
-> **Nota:** La información visualizada en este despliegue utiliza datos ficticios (*dummy data*) con fines estrictamente demostrativos para la validación de la interfaz y la lógica de cálculo de los KPIs.
+Este desarrollo representa la materialización táctica preliminar del nuevo modelo de **Supply Chain Management (SCM)**, enfocado en la reingeniería del proceso de **Pronóstico de la Demanda**.
 
-## Alcance Funcional
-El tablero de control está diseñado para ofrecer una lectura equilibrada entre el impacto económico, la calidad del pronóstico y la salud del portafolio. [cite_start]Se basa en las definiciones técnicas establecidas para la medición del desempeño en GN[cite: 1, 2].
+### Objetivo del Mockup
+El dashboard se entrega como una herramienta de exploración y **validación funcional**. Su propósito es permitir a los *planners*, líderes funcionales y directivos interactuar con la propuesta visual y lógica para:
+1.  Confirmar la utilidad de los indicadores propuestos.
+2.  Ajustar la experiencia de usuario (UX) antes de iniciar desarrollos complejos.
+3.  Asegurar una lectura equilibrada entre impacto económico, calidad del pronóstico y salud del portafolio.
 
-Las métricas principales implementadas en esta visualización incluyen:
+> **Nota de Confidencialidad:** La data presentada en este despliegue es simulada (*dummy data*). Su función es estrictamente facilitar la validación de los flujos de usuario y comportamiento de los KPIs.
 
-### 1. WMAPE (Weighted Mean Absolute Percentage Error)
+---
+
+## 2. Definición de Métricas (Lógica de Negocio Propuesta)
+El tablero implementa las fórmulas y definiciones técnicas establecidas en los documentos de gobierno del proceso de Planeación de la Demanda de GN, las cuales están sujetas a revisión durante esta fase:
+
+### WMAPE (Weighted Mean Absolute Percentage Error)
 * **Definición:** Mide el error total del plan de demanda ponderado por el volumen real.
-* [cite_start]**Objetivo:** Proporcionar una lectura ejecutiva del impacto económico de las desviaciones en el negocio[cite: 6].
+* **Fórmula:** $\sum |Plan - Real| / \sum Demanda Real$.
+* **Objetivo:** Proporcionar una lectura ejecutiva del impacto económico de las desviaciones en el negocio.
 
-### 2. MAPE (Mean Absolute Percentage Error)
-* **Definición:** Medición del error porcentual a nivel individual (SKU/Referencia) sin ponderación por volumen.
-* [cite_start]**Objetivo:** Diagnóstico granular del desempeño por referencia, permitiendo análisis por Sector, Categoría, Marca o Canal[cite: 6].
+### MAPE (Mean Absolute Percentage Error)
+* **Definición:** Medición del error porcentual a nivel individual (SKU/Referencia), tratando cada material de forma equitativa.
+* **Objetivo:** Diagnóstico granular del desempeño por referencia (Sector, Categoría, Marca o Canal).
 
-### 3. BIAS (Sesgo)
-* **Definición:** Indicador de la tendencia sistemática del plan (sobreestimación o subestimación).
-* [cite_start]**Objetivo:** Identificar sesgos estructurales en el proceso de planificación[cite: 6].
+### BIAS (Sesgo)
+* **Definición:** Indicador de la tendencia sistemática del plan a sobreestimar o subestimar la demanda.
+* **Fórmula:** $\sum (Plan - Real) / \sum Demanda Real$.
+* **Objetivo:** Identificar sesgos estructurales del proceso.
 
-### 4. Índice de Salud del Portafolio
-* [cite_start]**Definición:** Porcentaje de materiales cuyo MAPE individual se encuentra dentro de la meta definida (ej. ≤ 20%)[cite: 4, 6].
-* [cite_start]**Objetivo:** Evaluar la calidad global del portafolio evitando lecturas sesgadas por referencias de alto volumen[cite: 6].
+### Índice de Salud del Portafolio
+* **Definición:** Porcentaje de materiales cuyo MAPE individual se encuentra en o por debajo de la meta definida (ej. 20%).
+* **Objetivo:** Evaluar la calidad global del portafolio evitando lecturas sesgadas por referencias de alto volumen.
 
-## Stack Tecnológico
-Este prototipo ha sido construido utilizando tecnologías modernas para garantizar rendimiento y escalabilidad:
-* **Core:** React + TypeScript
-* **Build Tool:** Vite
-* **Estilos:** Tailwind CSS
-* **Infraestructura:** Despliegue continuo en Netlify
+---
 
-## Instrucciones de Ejecución Local
+## 3. Hoja de Ruta hacia Power BI (Siguientes Pasos)
+Este prototipo sirve como **insumo base para las sesiones de validación**. Una vez el equipo funcional apruebe la interacción y la lógica presentada aquí, este repositorio se convertirá en la especificación técnica para el equipo de desarrollo de Power BI.
 
-Para levantar el proyecto en un entorno de desarrollo local:
+La proyección de uso para el equipo de BI (post-validación) es la siguiente:
+
+### A. Especificación de UX/UI
+El diseño validado definirá el estándar visual para los reportes finales:
+* **Jerarquía Visual:** Uso de tarjetas de KPIs y gráficos de tendencia según lo aprobado en este mockup.
+* **Interacción:** Réplica de la experiencia de filtrado por *Regional*, *Canal* y *Categoría*.
+
+### B. Traducción de Lógica a DAX
+Las fórmulas matemáticas aquí expuestas deberán convertirse a medidas **DAX** dinámicas, asegurando que cálculos como el **WMAPE** iteren correctamente sobre la tabla de hechos (`SUMX`) según los filtros que validen los usuarios funcionales.
+
+---
+
+## 4. Arquitectura del Prototipo
+La solución ha sido construida bajo una arquitectura moderna de **Single Page Application (SPA)** para agilizar las iteraciones de cambio durante la fase de validación:
+
+* **Core:** React + TypeScript.
+* **Build Tool:** Vite.
+* **UI Components:** Radix UI + Tailwind CSS.
+* **Visualización:** Recharts.
+* **Infraestructura:** Despliegue en Netlify para revisión remota inmediata.
+
+## 5. Instrucciones de Ejecución Local
+
+Para levantar el proyecto y realizar revisiones locales:
 
 1.  **Instalar dependencias:**
     ```bash
@@ -51,10 +81,6 @@ Para levantar el proyecto en un entorno de desarrollo local:
 
 ---
 
-**Confidencialidad:** Este software y la documentación asociada contienen información propiedad de Summan y Grupo Nutresa. Su distribución está restringida a los stakeholders del proyecto PRAGMA.
-
----
-
-**Ana Maria Ochoa**
+[**Ana Maria Ochoa**](https://www.linkedin.com/in/8aanamaria/)
 Analista de Proyectos Contratista
-**Proyecto PRAGMA | Summan - Nutresa**
+**Proyecto PRAGMA | [Summan S.A.S](https://www.linkedin.com/company/summan-s-a-s/) - Nutresa**
